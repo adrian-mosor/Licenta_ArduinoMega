@@ -1,0 +1,4 @@
+{
+    "cmake.configureOnOpen": false,
+    "cmake.sourceDirectory": "${workspaceFolder}/lib/ArduinoJson-6.20.1"
+}

@@ -1,6 +1,7 @@
 #include <Arduino.h>
 
-int sensorPin = A0; // Declaration of the input pin
+#define KY018_PIN A0
+// int sensorPin = A0; // Declaration of the input pin
 
 int value = 0;
 
@@ -11,7 +12,7 @@ void setup(){
 
 void loop(){
 
-    value = analogRead(sensorPin);
+    value = analogRead(KY018_PIN);
     Serial.println(value, DEC);
 
     delay(1500);

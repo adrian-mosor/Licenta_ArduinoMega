@@ -3,9 +3,10 @@
 #include "messages.h"
 #include "temperature.h"
 #include "send_data.h"
+#include "receive_data.h"
 
 #define LED_PIN 9
-#define BRIGHTNESS 10
+#define BRIGHTNESS 1
 #define DHTPIN 8
 #define DHTTYPE DHT11 // DHT 11
 
@@ -15,7 +16,6 @@ bool test_flag = true;
 
 CRGB leds[NUM_LEDS];
 DHT dht(DHTPIN, DHTTYPE);
-String receivedMessage;
 SoftwareSerial espSerial(5, 6); //for sending data to esp
 
 void setup()
@@ -48,32 +48,7 @@ void setup()
 
 void loop()
 {
-    if (Serial.available()) {   //receives messages from ESP coming from Android
-
-        receivedMessage = Serial.readString();
-        receivedMessage.trim(); //removes whitespaces and enters
-
-        // Serial.println("Received message:");
-        // Serial.print(receivedMessage);
-        // Serial.println("-------------");
-
-        if(receivedMessage.equals("rgb_hi")){
-            
-            Serial.println("Mega receiver: rgb_hi");
-            print_hi();
-        }else
-        if(receivedMessage.equals("rgb_reset")){
-            
-            Serial.println("Mega receiver: rgb_reset");
-            FastLED.clear();
-            FastLED.show();
-
-        }else{
-            
-            Serial.println("Mega receiver: Wrong message");
-         }
-        
-    }
+    receive_data_from_esp8266(); //receive data from Android app via esp8266
     
     send_data_to_esp8266(); //send data from sensors to esp8266, so it can send further to ThingSpeak
 

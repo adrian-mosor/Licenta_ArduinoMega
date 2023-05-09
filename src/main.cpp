@@ -6,13 +6,19 @@
 #include "receive_data.h"
 
 #define LED_PIN 9
-#define BRIGHTNESS 1
+#define BRIGHTNESS 3
 #define DHTPIN 8
 #define DHTTYPE DHT11 // DHT 11
 
 bool hi_flag = false;
 bool dht_flag = false;
 bool test_flag = true;
+
+FirstUpdateTemperature first_update_temp = NOT_DEFINED_TEMP;
+FirstUpdateHumidity first_update_hum = NOT_DEFINED_HUM;
+
+TemperatureState current_temperature_state = NOT_DEFINED_STATE;
+HumidityLevel current_humidity_level = NOT_DEFINED_LEVEL;
 
 CRGB leds[NUM_LEDS];
 DHT dht(DHTPIN, DHTTYPE);
@@ -37,10 +43,10 @@ void setup()
     FastLED.addLeds<WS2812, LED_PIN, GRB>(leds, NUM_LEDS);
     FastLED.setBrightness(BRIGHTNESS);
 
-    FastLED.clear(); // update the state of the matrix
+    FastLED.clear(); // clear the state of the matrix
     FastLED.show();
 
-    // print_hi();
+    // print_hi_matrix();
 
     digitalWrite(LED_BUILTIN, HIGH);  // turn the LED on (HIGH is the voltage level)
 
@@ -51,5 +57,7 @@ void loop()
     receive_data_from_esp8266(); //receive data from Android app via esp8266
     
     send_data_to_esp8266(); //send data from sensors to esp8266, so it can send further to ThingSpeak
+
+    update_live_matrix();
 
 }

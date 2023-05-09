@@ -1,23 +1,34 @@
 #include "fast_led.h"
 #include "prints.h"
 
-void print_with_delay(int start, int end, unsigned long color, int delay_seconds){
+void print_with_delay(int start, int end, unsigned long color, int delay_seconds)
+{
 
-  if(start < end){
-    
-    for(int i = start; i <= end; i++){
-      leds[i] = color;
-      FastLED.show();
-      delay(delay_seconds);
-    } 
-  }
-  else
-  if(start > end){
+	if (start < end)
+	{
 
-    for(int i = start; i >= end; i--){
-      leds[i] = color;
-      FastLED.show();
-      delay(delay_seconds);
-    }
-  }
+		for (int i = start; i <= end; i++)
+		{
+			leds[i] = color;
+			FastLED.show();
+			delay(delay_seconds);
+		}
+	}
+	else if (start > end)
+	{
+
+		for (int i = start; i >= end; i--)
+		{
+			leds[i] = color;
+			FastLED.show();
+			delay(delay_seconds);
+		}
+	}
+}
+
+void print_with_fade(int index, unsigned long color, int delay_seconds){
+
+	leds[index] = color;
+	FastLED.show();
+	delay(delay_seconds);
 }

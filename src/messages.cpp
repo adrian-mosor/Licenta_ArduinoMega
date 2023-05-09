@@ -268,7 +268,7 @@ void turn_off_leds_temperature_matrix(){
 void turn_off_leds_humidity_matrix(){
 
     // the indices used by all humidity levels
-    int indices[] = { 58, 37, 57, 38, 56, 39, 55, 40, 54, 41, 53, 42, 52, 43, 51, 44, 50, 45
+    int indices[] = { 57, 38, 56, 39, 55, 40, 54, 41, 53, 42, 52, 43, 51, 44, 50, 45, 49, 46
     };
 
     // turn off all LEDs with the above indices

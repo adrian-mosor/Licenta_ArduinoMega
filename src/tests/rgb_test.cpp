@@ -36,7 +36,7 @@ void setup()
     FastLED.clear(); // update the state of the matrix
     FastLED.show();
 
-    print_hi();
+    print_hi_matrix();
 }
 
 void loop()

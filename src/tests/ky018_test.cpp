@@ -12,8 +12,8 @@ void setup(){
 
 void loop(){
 
-    value = analogRead(KY018_PIN);
-    Serial.println(value, DEC);
+    value = analogRead(KY018_PIN);  //higher the value, higher the darkness
+    Serial.println(value);
 
     delay(1500);
 }

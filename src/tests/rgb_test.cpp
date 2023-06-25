@@ -37,28 +37,33 @@ void setup()
     FastLED.show();
 
     print_hi_matrix();
+
+    //test-case for low-temperature scenario:
+    FastLED.clear(); // update the state of the matrix
+    FastLED.show();
+    print_snowflake_matrix();
 }
 
 void loop()
 {
 
     // test-cases used for brightness treshold values:
-    if(hi_flag == false){
+    // if(hi_flag == false){
 
-        for (int i = 0; i < 10; i++)    //max value = increment * steps
-        {
-            delay(2000);
-            increment_brightness();
-            Serial.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            Serial.print("Setting brightness to: ");
-            Serial.println(bright);
-            Serial.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-            FastLED.setBrightness(bright);
-            FastLED.show();
-        }
+    //     for (int i = 0; i < 10; i++)    //max value = increment * steps
+    //     {
+    //         delay(2000);
+    //         increment_brightness();
+    //         Serial.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    //         Serial.print("Setting brightness to: ");
+    //         Serial.println(bright);
+    //         Serial.println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    //         FastLED.setBrightness(bright);
+    //         FastLED.show();
+    //     }
 
-        hi_flag = true;
-    }
+    //     hi_flag = true;
+    // }
 
     // delay(2000);
     // FastLED.setBrightness(250);
